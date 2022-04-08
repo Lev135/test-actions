@@ -42,5 +42,5 @@ jobs:
       - name: Commiting changes
         run: |
           git add -A
-          git commit -m 'Release $GITHUB_SHA generated'
+          git commit -m "Release from branch $GITHUB_HEAD_REF generated"
           git push
