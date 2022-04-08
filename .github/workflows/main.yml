@@ -23,10 +23,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Setting up git
+        run: |
+          git config --global user.name 'Release bot'
+          git config --global user.email 'lev_135@mail.ru'
+          git checkout ${{ github.base.ref }}
+
       - name: Creating output file
         run: |
           mkdir -p out
-          echo "Hello, world!!!" > out/${{ github.sha }}
+          echo "Hello, world!!!" > out/release.txt
 
       - name: Printing files
         run: |
@@ -34,8 +40,6 @@ jobs:
 
       - name: Commiting changes
         run: |
-          git config --global user.name 'Release bot'
-          git config --global user.email 'lev_135@mail.ru'
           git add -A
-          git commit -m 'Release ${{ github.sha }}'
+          git commit -m 'Release ${{ github.sha }} generated'
           git push
