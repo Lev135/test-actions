@@ -28,7 +28,7 @@ jobs:
           git config --global user.name 'Release bot'
           git config --global user.email 'lev_135@mail.ru'
           echo "ref: $GITHUB_REF, ref-name: $GITHUB_REF_NAME, ref-type: $GITHUB_REF_TYPE"
-          echo "base: $BASE_BRANCH"
+          echo "base: ${{ github.base_ref }}"
           git checkout $GITHUB_REF_NAME
 
       - name: Creating output file
