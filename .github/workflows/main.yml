@@ -27,9 +27,16 @@ jobs:
 
       - name: Creating output file
         run: |
-          mkdir out
+          mkdir -p out
           echo "Hello, world!!!" > out/${{ github.sha }}
 
       - name: Printing files
         run: |
           ls out
+
+      - name: Commiting changes
+        run: |
+          git config --global user.name 'Release bot'
+          git config --global user.email 'lev_135@mail.ru'
+          git commit -m 'Release ${{ github.sha }}'
+          git push
