@@ -34,6 +34,7 @@ jobs:
         run: |
           mkdir -p out
           echo "Hello, world!!!" > out/release.txt
+          echo $GITHUB_HEAD_REF >> out/release-notes.txt
 
       - name: Printing files
         run: |
