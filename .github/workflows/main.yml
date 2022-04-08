@@ -27,7 +27,7 @@ jobs:
         run: |
           git config --global user.name 'Release bot'
           git config --global user.email 'lev_135@mail.ru'
-          git checkout ${{ github.base.ref }}
+          git checkout $GITHUB_REF_NAME
 
       - name: Creating output file
         run: |
@@ -41,5 +41,5 @@ jobs:
       - name: Commiting changes
         run: |
           git add -A
-          git commit -m 'Release ${{ github.sha }} generated'
+          git commit -m 'Release $GITHUB_SHA generated'
           git push
