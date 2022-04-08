@@ -34,7 +34,7 @@ jobs:
         run: |
           mkdir -p out
           echo "Hello, world!!!" > out/release.txt
-          echo "${date +"%Y-%m-%d %T"}: on branch $GITHUB_HEAD_REF" >> out/release-notes.txt
+          echo "$(date +"%Y-%m-%d %T"): on branch $GITHUB_HEAD_REF" >> out/release-notes.txt
 
       - name: Printing files
         run: |
