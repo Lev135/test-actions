@@ -17,6 +17,6 @@ jobs:
     steps:
       - name: Hello world
         run: |
-          shell
+          bash
           echo "hello world"
           exit
