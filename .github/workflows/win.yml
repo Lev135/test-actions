@@ -15,8 +15,32 @@ jobs:
   win:
     runs-on: windows-latest
     steps:
-      - name: Hello world
+      - uses: actions/checkout@v3
+
+      - name: Running bash
+        run: bash
+
+      - name: Setting up git
         run: |
-          bash
-          echo "hello world"
-          exit
+          git config --global user.name 'Release bot'
+          git fetch
+          git checkout $GITHUB_HEAD_REF
+
+      - name: Creating output file
+        run: |
+          mkdir -p out
+          echo "Hello, world!!!" > out/release.txt
+          echo "$(date +"%Y-%m-%d %T"): on branch $GITHUB_HEAD_REF" >> out/release-notes.txt
+
+      - name: Printing files
+        run: |
+          ls out
+
+      - name: Commiting changes
+        run: |
+          git add -A
+          git commit -m "Release from branch $GITHUB_HEAD_REF generated"
+          git push
+          
+      - name: Exiting bash
+        run: exit
