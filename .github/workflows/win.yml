@@ -15,11 +15,7 @@ jobs:
   win:
     runs-on: windows-latest
     steps:
-      - name: Hello-linux
-        run: |
-          p="hello world"
-          echo $p
       - name: Hello world
         run: |
-          @set p="hello world"
+          @set p=hello world
           @echo %p%
