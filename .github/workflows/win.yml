@@ -17,5 +17,5 @@ jobs:
     steps:
       - name: Hello world
         run: |
-          @set p='hello world'
+          @set p="hello world";
           @echo %p%
