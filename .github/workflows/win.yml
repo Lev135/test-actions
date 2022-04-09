@@ -17,5 +17,6 @@ jobs:
     steps:
       - name: Hello world
         run: |
-          SET p="hello world";
-          ECHO %p%
+          shell
+          echo "hello world"
+          exit
